@@ -31,8 +31,10 @@ Gem::Specification.new do |spec|
   spec.metadata["source_code_uri"] = "https://github.com/posiczko/devise-tailwindcssed"
   spec.metadata["rubygems_mfa_required"] = "true"
 
-  spec.signing_key = Gem.default_key_path
-  spec.cert_chain = [Gem.default_cert_path]
+  if File.exist? Gem.default_key_path
+    spec.signing_key = Gem.default_key_path
+    spec.cert_chain = [Gem.default_cert_path]
+  end
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added
@@ -45,11 +47,11 @@ Gem::Specification.new do |spec|
 
   # Resolve conflict between the gemspec's required_ruby_version and rubocop's TargetRubyVersion
   # rubocop:disable  Gemspec/RequiredRubyVersion
-  spec.required_ruby_version = ">= 2.6", "<= 3.3.1"
+  spec.required_ruby_version = ">= 2.6", "<= 3.3.5"
   # rubocop:enable  Gemspec/RequiredRubyVersion
 
-  spec.add_dependency "rails", ">= 5.2.3.4", "<= 7.3"
-  spec.add_runtime_dependency "railties", "> 4.0", "<= 7.3"
+  spec.add_dependency "rails", ">= 5.2.3.4", "<= 8.0"
+  spec.add_runtime_dependency "railties", "> 4.0", "<= 8.0"
 
   spec.extra_rdoc_files = Dir["README*", "LICENSE*"]
   spec.require_paths = ["lib"]
